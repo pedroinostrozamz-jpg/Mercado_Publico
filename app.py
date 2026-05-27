@@ -73,4 +73,7 @@ if "data" in st.session_state:
         st.markdown("**Descripción:**")
         st.write(df.loc[seleccion, "descripcion"])
 
-        st.markdown("🔗 [Ver en Mercado Público](" + df.loc[seleccion, "link"] + ")")
+        
+        st.markdown(f"### 🔗 Abrir en Mercado Público")
+        st.markdown(f"[Ver licitación completa]({df.loc[seleccion, 'link']})")
+

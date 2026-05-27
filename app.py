@@ -10,21 +10,21 @@ from scoring import calcular_score, clasificar_tipo
 # ------------------------------------------
 st.set_page_config(page_title="Radar Licitaciones", layout="wide")
 
-st.title("📊 Radar de Licitaciones - Air Products Chile")
+st.title("Radar de Licitaciones - Air Products Chile")
 
 st.write("Monitoreo automático de oportunidades desde Mercado Público")
 
 # ------------------------------------------
 # BOTÓN DE ACTUALIZACIÓN
 # ------------------------------------------
-if st.button("🔄 Actualizar licitaciones"):
+if st.button("Actualizar licitaciones"):
 
     with st.spinner("Obteniendo licitaciones..."):
 
         df = get_licitaciones()
 
         if df.empty:
-            st.warning("⚠️ No se encontraron licitaciones")
+            st.warning("No se encontraron licitaciones")
         else:
             # -------------------------
             # LIMPIEZA
@@ -69,7 +69,7 @@ if "data" in st.session_state:
 
     df = st.session_state["data"]
 
-    st.subheader(f"✅ Oportunidades detectadas: {len(df)}")
+    st.subheader(f"Oportunidades detectadas: {len(df)}")
 
     # -------------------------
     # TABLA PRINCIPAL
@@ -77,7 +77,7 @@ if "data" in st.session_state:
     st.dataframe(
         df[[
             "codigo",
-            "tipo_licitacion",  # ✅ NUEVO
+            "tipo_licitacion",  
             "titulo",
             "entidad",
             "fecha_cierre",
@@ -100,17 +100,17 @@ if "data" in st.session_state:
     # -------------------------
     if seleccion is not None:
 
-        st.markdown("## 📄 Detalle de Licitación")
+        st.markdown("## Detalle de Licitación")
 
         st.write("**Código:**", df.loc[seleccion, "codigo"])
-        st.write("**Tipo de Licitación:**", df.loc[seleccion, "tipo_licitacion"])  # ✅ NUEVO
+        st.write("**Tipo de Licitación:**", df.loc[seleccion, "tipo_licitacion"])  
         st.write("**Entidad:**", df.loc[seleccion, "entidad"])
         st.write("**Fecha de cierre:**", df.loc[seleccion, "fecha_cierre"])
         st.write("**Tipo (clasificación):**", df.loc[seleccion, "tipo"])
         st.write("**Score:**", df.loc[seleccion, "score"])
 
-        st.markdown("### 📝 Descripción")
+        st.markdown("### Descripción")
         st.write(df.loc[seleccion, "descripcion"])
 
-        st.markdown("### 🔗 Abrir en Mercado Público")
+        st.markdown("### Abrir en Mercado Público")
         st.markdown(df.loc[seleccion, "link"])

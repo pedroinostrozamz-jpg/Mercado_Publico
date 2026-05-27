@@ -8,9 +8,9 @@ from scoring import calcular_score, clasificar_tipo
 # ------------------------------------------
 # CONFIGURACIÓN APP
 # ------------------------------------------
-st.set_page_config(page_title="Radar Licitaciones", layout="wide")
+st.set_page_config(page_title="Dash-Board Licitaciones", layout="wide")
 
-st.title("Radar de Licitaciones - Air Products Chile")
+st.title("Dash-Board Licitaciones - Air Products Chile")
 
 st.write("Monitoreo automático de oportunidades desde Mercado Público")
 

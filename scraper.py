@@ -7,8 +7,9 @@ def get_licitaciones():
     ticket = st.secrets["API_KEY"]
 
     params = {
-        "estado": "publicada",
-        "ticket": ticket
+    "estado": "publicada",
+    "ticket": ticket,
+    "cantidad": 100  
     }
 
     response = requests.get(url, params=params)

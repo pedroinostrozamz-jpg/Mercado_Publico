@@ -1,29 +1,10 @@
 def calcular_score(texto):
-    if not texto:
+    if not isinstance(texto, str):
         return 0
 
     texto = texto.lower()
 
-    keywords_alta = [
-        "oxigeno", "oxígeno",
-        "nitrogeno", "nitrógeno",
-        "argon", "argón",
-        "acetileno"
-    ]
-
-    keywords_media = [
-        "soldadura",
-        "corte",
-        "electrodo",
-        "insumos industriales"
-    ]
-
-    keywords_negativas = [
-        "alimentos",
-        "aseo",
-        "oficina",
-        "ropa"
-    ]
+    keywords_alta = ["oxígeno", "oxigeno", "nitrógeno", "nitrogeno", "argón", "argon", "Gases"]
 
     score = 0
 
@@ -31,21 +12,16 @@ def calcular_score(texto):
         if k in texto:
             score += 40
 
-    for k in keywords_media:
-        if k in texto:
-            score += 20
-
-    for k in keywords_negativas:
-        if k in texto:
-            score -= 30
-
     return score
 
 
 def clasificar_tipo(texto):
+    if not isinstance(texto, str):
+        return "Otro"
+
     texto = texto.lower()
 
-    if any(k in texto for k in ["oxígeno", "nitrógeno", "argón", "acetileno"]):
+    if any(k in texto for k in ["oxígeno", "oxigeno", "nitrógeno", "nitrogeno", "argón", "argon", "gases"]):
         return "Gas"
     elif "soldadura" in texto:
         return "Soldadura"

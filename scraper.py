@@ -26,7 +26,7 @@ def get_licitaciones():
     for lic in licitaciones:
         rows.append({
             "codigo": lic.get("CodigoExterno"),
-            "link": f"https://www.mercadopublico.cl/Home/BusquedaLicitacion?textoBusqueda={lic.get('CodigoExterno')}"
+            "link": f"https://www.mercadopublico.cl/Home/BusquedaLicitacion?textoBusqueda={lic.get('CodigoExterno')}",
             "titulo": lic.get("Nombre"),
             "descripcion": lic.get("Descripcion"),
             "entidad": lic.get("NombreOrganismo"),

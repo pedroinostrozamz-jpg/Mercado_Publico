@@ -21,8 +21,13 @@ if st.button("🔄 Actualizar licitaciones"):
             st.warning("No se pudieron obtener datos.")
         else:
             # Score
-            df["score"] = df["descripcion"].apply(calcular_score)
-            df["tipo"] = df["descripcion"].apply(clasificar_tipo)
+            df["texto_completo"] = (
+                df["titulo"].fillna("") + " " + df["descripcion"].fillna("")
+            )
+
+            df["score"] = df["texto_completo"].apply(calcular_score)
+            df["tipo"] = df["texto_completo"].apply(clasificar_tipo)
+
 
             # Filtro relevante
             df = df[df["score"] >= 40]
